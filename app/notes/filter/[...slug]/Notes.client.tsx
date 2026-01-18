@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { FetchNotes } from '@/lib/api';
-import { useParams } from 'next/navigation';
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import { useDebouncedCallback } from 'use-debounce';
@@ -11,16 +10,19 @@ import Pagination from '@/components/Pagination/Pagination';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 
-function NotesFilterClient() {
-  const { slug } = useParams<{ slug: string[] }>();
+interface NotesFilterPageProps {
+  tag: string;
+}
+
+function NotesFilterClient({ tag }: NotesFilterPageProps) {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const currentTag = slug && slug[0] !== 'all' ? slug[0] : undefined;
+  const tagForApi = tag === 'all' ? undefined : tag;
 
   const { data } = useQuery({
-    queryKey: ['notes', search, page, 12, currentTag],
-    queryFn: () => FetchNotes({ search, page, perPage: 12, tag: currentTag }),
+    queryKey: ['notes', search, page, 12, tag],
+    queryFn: () => FetchNotes({ search, page, perPage: 12, tag: tagForApi }),
     placeholderData: keepPreviousData,
   });
 

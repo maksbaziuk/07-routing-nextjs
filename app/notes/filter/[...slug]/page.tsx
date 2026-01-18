@@ -23,7 +23,7 @@ async function FilterPage({ params }: PageProps) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesFilterPage />
+      <NotesFilterPage tag={currentTag} />
     </HydrationBoundary>
   );
 }
