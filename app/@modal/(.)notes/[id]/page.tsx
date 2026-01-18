@@ -2,7 +2,7 @@
 
 import { useRouter, useParams } from 'next/navigation';
 import Modal from '@/components/Modal/Modal';
-import NotePreview from '@/components/NotePreview/NotePreview';
+import NotePreview from './NotePreview.client.tsx';
 
 function InterceptedNoteDetails() {
   const router = useRouter();

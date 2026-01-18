@@ -1,5 +1,5 @@
 import { FetchNotes } from '@/lib/api';
-import NotesClient from '../../Notes.client';
+import NotesFilterPage from './Notes.client';
 import {
   dehydrate,
   HydrationBoundary,
@@ -23,7 +23,7 @@ async function FilterPage({ params }: PageProps) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient tag={currentTag} />
+      <NotesFilterPage />
     </HydrationBoundary>
   );
 }
