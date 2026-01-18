@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import css from './SidebarNotes.module.css';
-import type {NoteTag} from '@/types/note';
+import type { NoteTag } from '@/types/note';
 
 const TAGS: NoteTag[] = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
 
-export default function SidebarNotes() {
+function SidebarNotes() {
   return (
     <ul className={css.menuList}>
       <li className={css.menuItem}>
@@ -22,3 +22,5 @@ export default function SidebarNotes() {
     </ul>
   );
 }
+
+export default SidebarNotes;

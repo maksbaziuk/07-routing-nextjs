@@ -7,12 +7,12 @@ import {
 } from '@tanstack/react-query';
 
 interface PageProps {
-  params: Promise<{ tag?: string[] }>;
+  params: Promise<{ slug?: string[] }>;
 }
 
-export default async function FilterPage({ params }: PageProps) {
-  const { tag } = await params;
-  const currentTag = tag?.[0] || 'all';
+async function FilterPage({ params }: PageProps) {
+  const { slug } = await params;
+  const currentTag = slug?.[0] || 'all';
 
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
@@ -27,3 +27,5 @@ export default async function FilterPage({ params }: PageProps) {
     </HydrationBoundary>
   );
 }
+
+export default FilterPage;

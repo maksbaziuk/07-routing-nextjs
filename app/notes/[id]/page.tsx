@@ -19,6 +19,7 @@ async function NoteDetailsPage({ params }: NoteProps) {
     queryKey: ['note', id],
     queryFn: () => FetchNotesById(id),
   });
+
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <NoteDetailsClient />

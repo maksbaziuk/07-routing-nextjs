@@ -7,10 +7,12 @@ import NotePreview from '@/components/NotePreview/NotePreview';
 function InterceptedNoteDetails() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
+
   return (
     <Modal isOpen={true} onClose={() => router.back()}>
       <NotePreview id={id} />
     </Modal>
   );
 }
+
 export default InterceptedNoteDetails;
